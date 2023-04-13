@@ -4,15 +4,30 @@ class Player:
     Attributes: 
         name(str) - name of player
         home(int) - num of points player has
+        score(int)- the score of the player
     """
     def __init__(self, name):
         self.name = name
-        self.home = 0
+        self.home = []
+        self.score = 0
+        
     def choose_card(filepath):
         with open(filepath, encoding="utf-8") as f:
             for line in f:
                 my_card = random.choice(line.strip())
                 return my_card
+            
+    def update_home(self, points):
+        '''
+        Updates the score of the player by adding he given points
+        
+        Args:
+         - points(int): The number of points that should be added to
+           the score borad
+        '''
+        score += points
+    
+        
 class HumanPlayer(Player):
     """human player playing game
 
