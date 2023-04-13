@@ -1,9 +1,18 @@
+import random
 class Player:
     """Both computer and human players
     Attributes: 
         name(str) - name of player
         home(int) - num of points player has
     """
+    def __init__(self, name):
+        self.name = name
+        self.home = 0
+    def choose_card(filepath):
+        with open(filepath, encoding="utf-8") as f:
+            for line in f:
+                my_card = random.choice(line.strip())
+                return my_card
 class HumanPlayer(Player):
     """human player playing game
 
