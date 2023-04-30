@@ -7,11 +7,9 @@ def deck(filePath):
     with open(filePath, "r", encoding = "utf-8") as file:
         # INSERT regex w/capturing groups for the number/letter + the name
         # or maybe not here since we're not doing dict anymore
+        deck_list = []
         for line in file:
-            # create a list with '3 spades' 'A ace', etc.
-            # don't forget to use .strip() or .rstrip()
-            # name the list deck_list and delete this line of code:
-            pass
+            deck_list.append(line.strip())
     return deck_list
 
 
