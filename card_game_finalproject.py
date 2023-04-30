@@ -63,7 +63,7 @@ class Game:
     """A game of Injera be Wet"""
     def __init__(self, players):
         self.players = players
-        self.homes = {player.name: 0 for player in players}
+        self.homes = {p.name: 0 for p in players}
         self.middle_cards = list()
         self.pulled_cards = list()
     
