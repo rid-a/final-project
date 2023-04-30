@@ -31,6 +31,16 @@ class Player:
         Returns:
             random_card (str): the card the user pulled
         """
+        random_card = random.choice(table.outer_cards) # ex. "3 spades"
+        
+        # use regex to get the number/letter and the name (spades, hearts, etc) and store each in a variable.
+        self.card_value = "something like 3 or A"
+        self.card_suit = "something like spades"
+        
+        
+        print(table) # prints current state of the table as defined in Table class (so they know what's in the middle & maybe num of turns?)
+        print (f"{self.name}, you pulled a {self.card_value} of {self.card_suit}!")
+        return random_card
 
 class Table:
     """Represents the current state of the game, AKA what's on the table
