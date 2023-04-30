@@ -1,6 +1,7 @@
 import random
 from argparse import ArgumentParser
 import sys
+import re
 
 def deck(filePath):
     deck_list = []
@@ -33,10 +34,11 @@ class Player:
         """
         random_card = random.choice(table.outer_cards) # ex. "3 spades"
         
-        # use regex to get the number/letter and the name (spades, hearts, etc) and store each in a variable.
-        self.card_value = "something like 3 or A"
-        self.card_suit = "something like spades"
-        
+        regex = r"(?P<value>\d+|[A-Z])\s(?P<suit>[a-z]+)"
+        match = re.search (regex, random_card)
+
+        self.card_value = match.group("value")
+        self.card_suit = match.group("suit")
         
         print(table) # prints current state of the table as defined in Table class (so they know what's in the middle & maybe num of turns?)
         print (f"{self.name}, you pulled a {self.card_value} of {self.card_suit}!")
