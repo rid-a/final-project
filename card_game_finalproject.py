@@ -54,6 +54,10 @@ class Table:
         middle_cards (list of str):
         homes (dict of str: int):
     """
+    def __init__(self, card_deck, pulled_cards, middle_cards, homes): 
+        self.outer_cards = card_deck - pulled_cards
+        self.middle_cards = middle_cards.copy()
+        self.homes = homes.copy()
 
 class Game:
     """A game of Injera be Wet"""
