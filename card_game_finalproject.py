@@ -13,7 +13,15 @@ def deck(filePath):
             deck_list.append(line.strip())
     return deck_list
 
-
+class Card:
+    def __init__(self, card):
+        self.card_str = card
+    
+    def card_name(self):
+        self.name = f"{self.value} of {self.suit}"
+        
+    def __str__(self):
+        return self.card_str
 class Player:
     def __init__(self, name):
         self.name = name
