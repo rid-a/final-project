@@ -67,6 +67,13 @@ class Game:
         self.middle_cards = list()
         self.pulled_cards = list()
     
+    def table(self):
+        """
+        Return Table w/these attributes as arguments
+        """
+        card_deck = deck("card_deck.txt")
+        return Table(card_deck, self.pulled_cards, self.middle_cards, self.homes)
+    
     
 def main(cardsList, playersList):
     """Set up and play a game of Injera be Wet"""
