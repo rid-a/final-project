@@ -22,6 +22,11 @@ class Card:
         match = re.search (regex, self.card_str)
         self.value = match.group("value")
     
+    def card_suit(self):
+        regex = r"\s(?P<suit>[a-z]+)"
+        match = re.search(regex, self.card_str)
+        self.suit = match.group("suit")
+    
     def card_name(self):
         self.name = f"{self.value} of {self.suit}"
         
