@@ -15,7 +15,12 @@ def deck(filePath):
 
 class Card:
     def __init__(self, card):
-        self.card_str = card
+        self.card_str = card    
+        
+    def card_value(self):
+        regex = r"(?P<value>\d+|[A-Z])"
+        match = re.search (regex, self.card_str)
+        self.value = match.group("value")
     
     def card_name(self):
         self.name = f"{self.value} of {self.suit}"
