@@ -76,6 +76,14 @@ class Table:
         self.outer_cards = card_deck - pulled_cards
         self.middle_cards = middle_cards.copy()
         self.homes = homes.copy()
+        
+    def draw_card(self):
+        """Draws a card from the outer circle and adds it to the middle"""
+        if not self.outer_cards:
+            return False  # Return false if there are no cards left to draw
+        card = self.outer_cards.pop(0)
+        self.middle_cards.append(card)
+        return True
 
 class Game:
     """A game of Injera be Wet"""
