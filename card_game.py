@@ -88,3 +88,5 @@ class Game:
             print (f"{player.name}, you pulled a {card.card_name()}!")
             
             see_match = input("Do you see a match? Yes/No. ")
+            if see_match.lower() == 'yes':
+                possible_match = Card(input("What card is the match? (Format like this: '3 diamonds' or 'A spades') choose wisely, you only get one chance )").strip())
