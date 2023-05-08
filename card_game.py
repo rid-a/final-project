@@ -18,7 +18,7 @@ class Card:
     def card_value_suit(self):
         regex = r"(?P<value>\d+[A-Z])\s(?P<suit>[a-z]+)"
         match = re.search(regex, self.card_str)
-        value, suit = match.group ("value"), match.group("suit")
+        value, suit = match.group("value"), match.group("suit")
         return value, suit
     
     def card_name(self):
@@ -48,7 +48,7 @@ class Player:
 class Table:
     def __init__(self, card_deck, pulled_cards, middle_cards, homes):
         self.outer_cards = [x for x in card_deck if x not in pulled_cards if x not in middle_cards]
-        self.middle_cards = middle_cards.copy() # a list of str
+        self.middle_cards = middle_cards.copy()
         self.homes = homes.copy()
     
     def __str__(self):
@@ -97,7 +97,8 @@ class Game:
                     print ("Match successful! Both cards will be added to your home.\n")
                     self.homes[player.name] += 2
                     self.middle_cards.remove(possible_match.card_str)
-                    return 
+                    return
+                
                 else:
                     print("Match unsuccessful. Your card will be added tothe middle.\n")
                     self.middle_cards.append(card.card_str)
@@ -117,6 +118,7 @@ class Game:
             loop += 1
             player = self.players[loop % len(self.players)]
             self.turn(player)
+        
         print(f"Game Over! {table}")   
         winner = max(table.homes, key=lambda name: table.homes[name])         
         print(f"The winner is {winner}!")
@@ -127,11 +129,11 @@ def main(playersList):
     game = Game(players)
     game.play_game()
     
-def parse_arg(argList):
+def parse_args(argList):
     parser = ArgumentParser()
     parser.add_argument('names', nargs="*", help = 'player names')
     return parser.parse_args(argList)
 
 if __name__ == "__main__":
-    args = parse_arg(sys.argv[1:])
+    args = parse_args(sys.argv[1:])
     main(args.names)
