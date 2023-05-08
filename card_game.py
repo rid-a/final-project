@@ -54,3 +54,11 @@ class Table:
     def __str__(self):
         """returns an informal repsresentation of the board """
         return(f"Middle Cards: {self.middle_cards} Homes: {self.homes}")
+    
+class Game:
+    """A game of Injera Bewatt"""
+    def __intit__(self, players, deckList = deck ("card_deck.txt")):
+        self.players = players
+        self.homes = {p.name: 0 for p in players}
+        self.middle_cards = random.sample(deckList, 4)
+        self.pulled_cards = list()
