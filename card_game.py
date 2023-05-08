@@ -103,3 +103,8 @@ class Game:
                     self.middle_cards.append(card.card_str)
                     return
                 
+            elif see_match.lower() == "no":
+                print("Your turn is over, your card will be added to the middle.\n")
+                self.middle_cards.append(card.card_str)
+                return 
+                
