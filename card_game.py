@@ -14,3 +14,23 @@ def deck(filePath):
 class Card:
     def __init__(self, card):
         self.card_str = card
+        
+    def card_value_suit(self):
+        regex = r"(?P<value>\d+[A-Z])\s(?P<suit>[a-z]+)"
+        match = re.search(regex, self.card_str)
+        value, suit = match.group ("value"), match.group("suit")
+        return value, suit
+    
+    def card_name(self):
+        if self.card_value_suit()[0] == "J":
+            name = f"Jack of {self.card_value_suit()[1]}"
+        elif self.card_value_suit()[0] == "Q":
+            name = f"Queen of {self.card_value_suit()[1]}"
+        elif self.card_value_suit()[0] == "K":
+            name = f"King of {self.card_value_suit()[1]}"
+        elif self.card_value_suit()[0] == "A":
+            name = f"Ace of {self.card_value_suit()[1]}"
+        else:
+            name = f"{self.card_value_suit()[0]} of {self.card_value_suit()[1]}"
+        return name
+            
