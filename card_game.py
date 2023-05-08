@@ -57,7 +57,7 @@ class Table:
     
 class Game:
     """A game of Injera Bewatt"""
-    def __intit__(self, players, deckList = deck ("card_deck.txt")):
+    def __init__(self, players, deckList = deck ("card_deck.txt")):
         self.players = players
         self.homes = {p.name: 0 for p in players}
         self.middle_cards = random.sample(deckList, 4)
