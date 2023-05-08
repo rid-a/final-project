@@ -107,6 +107,7 @@ class Game:
                 print("Your turn is over, your card will be added to the middle.\n")
                 self.middle_cards.append(card.card_str)
                 return 
+    
     def play_game(self):
         """Plays the game while the game is not over"""
         table = self.table()
@@ -118,4 +119,10 @@ class Game:
             self.turn(player)
         print(f"Game Over! {table}")   
         winner = max(table.homes, key=lambda name: table.homes[name])         
-        print(f"The winner is {winner}!")    
+        print(f"The winner is {winner}!")
+    
+def main(playersList):
+    """Set up and play a game of Injera be Wet"""
+    players = [Player(name) for name in playersList]
+    game = Game(players)
+    game.play_game()
