@@ -89,9 +89,9 @@ class Game:
             
             see_match = input("Do you see a match? Yes/No. ")
             if see_match.lower() == 'yes':
-                possible_match = Card(input("What card is the match?" + 
+                possible_match = Card(input("What card is the match? " + 
                     "(Format like this: '3 diamonds' or 'A spades')" + 
-                    "choose wisely, you only get one chance. )").strip())
+                    "choose wisely, you only get one chance. ").strip())
                 
                 if card.card_value_suit()[0] == possible_match.card_value_suit()[0] and possible_match.card_str in table.middle_cards:
                     print ("Match successful! Both cards will be added to your home.\n")
@@ -100,7 +100,7 @@ class Game:
                     return
                 
                 else:
-                    print("Match unsuccessful. Your card will be added tothe middle.\n")
+                    print("Match unsuccessful. Your card will be added to the middle.\n")
                     self.middle_cards.append(card.card_str)
                     return
                 
