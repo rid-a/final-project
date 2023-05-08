@@ -10,3 +10,7 @@ def deck(filePath):
         for line in file: 
             deck_list.append(line.strip())
     return deck_list
+
+class Card:
+    def __init__(self, card):
+        self.card_str = card
