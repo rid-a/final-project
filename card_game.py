@@ -126,3 +126,12 @@ def main(playersList):
     players = [Player(name) for name in playersList]
     game = Game(players)
     game.play_game()
+    
+def parse_arg(argList):
+    parser = ArgumentParser()
+    parser.add_argument('names', nargs="*", help = 'player names')
+    return parser.parse_args(argList)
+
+if __name__ == "__main__":
+    args = parse_arg(sys.argv[1:])
+    main(args.names)
