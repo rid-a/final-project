@@ -36,3 +36,11 @@ class Card:
     
     def __str__(self):
         return f"{self.card_str}"
+
+class Player:
+    def __init__(self, name):
+        self.name = name
+
+    def choose_card(self, table):
+        random_card = random.choice(table.outer_cards)
+        return random_card
