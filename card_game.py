@@ -50,3 +50,7 @@ class Table:
         self.outer_cards = [x for x in card_deck if x not in pulled_cards if x not in middle_cards]
         self.middle_cards = middle_cards.copy() # a list of str
         self.homes = homes.copy()
+    
+    def __str__(self):
+        """returns an informal repsresentation of the board """
+        return(f"Middle Cards: {self.middle_cards} Homes: {self.homes}")
