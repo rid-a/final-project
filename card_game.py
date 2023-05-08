@@ -44,3 +44,9 @@ class Player:
     def choose_card(self, table):
         random_card = random.choice(table.outer_cards)
         return random_card
+
+class Table:
+    def __init__(self, card_deck, pulled_cards, middle_cards, homes):
+        self.outer_cards = [x for x in card_deck if x not in pulled_cards if x not in middle_cards]
+        self.middle_cards = middle_cards.copy() # a list of str
+        self.homes = homes.copy()
