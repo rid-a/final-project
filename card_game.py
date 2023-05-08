@@ -66,3 +66,9 @@ class Game:
     def table(self):
         """Return the table aka an instance of the table class, using this class' attributes as arguments"""
         return Table(deck("card_deck.txt"), self.pulled_cards, self.middle_cards, self.homes)
+    
+    def game_over(self, table):
+        if table.outer_cards:
+            return False
+        else:
+            return True
