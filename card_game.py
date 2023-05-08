@@ -98,3 +98,8 @@ class Game:
                     self.homes[player.name] += 2
                     self.middle_cards.remove(possible_match.card_str)
                     return 
+                else:
+                    print("Match unsuccessful. Your card will be added tothe middle.\n")
+                    self.middle_cards.append(card.card_str)
+                    return
+                
