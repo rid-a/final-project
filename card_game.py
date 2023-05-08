@@ -16,7 +16,7 @@ class Card:
         self.card_str = card
         
     def card_value_suit(self):
-        regex = r"(?P<value>\d+[A-Z])\s(?P<suit>[a-z]+)"
+        regex = r"(?P<value>\d+|[A-Z])\s(?P<suit>[a-z]+)"
         match = re.search(regex, self.card_str)
         value, suit = match.group("value"), match.group("suit")
         return value, suit
