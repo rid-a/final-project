@@ -72,3 +72,19 @@ class Game:
             return False
         else:
             return True
+    
+    def turn(self, player):
+        """"A player's turn.
+        Args:
+            player (Player): a player
+        """
+        table = self.table()
+        
+        while self.game_over(table) == False:
+            card = Card(player.choose_card(table))
+            self.pulled_cards.append(card.card_str)
+            
+            print(table)
+            print (f"{player.name}, you pulled a {card.card_name()}!")
+            
+            see_match = input("Do you see a match? Yes/No. ")
