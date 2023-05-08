@@ -97,4 +97,4 @@ class Game:
                     print ("Match successful! Both cards will be added to your home.\n")
                     self.homes[player.name] += 2
                     self.middle_cards.remove(possible_match.card_str)
-                    return
+                    return 
