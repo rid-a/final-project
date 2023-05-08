@@ -33,4 +33,6 @@ class Card:
         else:
             name = f"{self.card_value_suit()[0]} of {self.card_value_suit()[1]}"
         return name
-            
+    
+    def __str__(self):
+        return f"{self.card_str}"
