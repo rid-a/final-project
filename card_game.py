@@ -62,3 +62,7 @@ class Game:
         self.homes = {p.name: 0 for p in players}
         self.middle_cards = random.sample(deckList, 4)
         self.pulled_cards = list()
+    
+    def table(self):
+        """Return the table aka an instance of the table class, using this class' attributes as arguments"""
+        return Table(deck("card_deck.txt"), self.pulled_cards, self.middle_cards, self.homes)
