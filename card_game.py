@@ -34,12 +34,24 @@ class Card:
         self.card_str = card
         
     def card_value_suit(self):
+        '''Uses regex to group values and suits(Yasmin, regex, sequence 
+        unpacking).
+        
+        Returns:
+            value(str): card number
+            suit(str): card suit
+        '''
+    
         regex = r"(?P<value>\d+|[A-Z])\s(?P<suit>[a-z]+)"
         match = re.search(regex, self.card_str)
         value, suit = match.group("value"), match.group("suit")
         return value, suit
     
     def card_name(self):
+        '''Specifies card name based on value (Yasmin, sequence unpacking).
+        Returns:
+            name(str): name of the card
+        '''
         if self.card_value_suit()[0] == "J":
             name = f"Jack of {self.card_value_suit()[1]}"
         elif self.card_value_suit()[0] == "Q":
@@ -167,7 +179,7 @@ def main(playersList):
     
 def parse_args(argList):
     '''
-    Parses the command-line arguments(Lima, key function: ArgumentParser)
+    Parses the command-line arguments(Lima, ArgumentParser)
    
     Args:
      - arglist (list of str): arguments from the command line.
