@@ -54,7 +54,8 @@ class Card:
     
     def __str__(self):
         '''
-        Returns the string representation of the card (Lima)
+        Returns the string representation of the card 
+        (Lima, key function: informal representation using magic method)
        
         Returns:
          - str: the string that represents a card
@@ -166,7 +167,7 @@ def main(playersList):
     
 def parse_args(argList):
     '''
-    Parses the command-line arguments(Lima)
+    Parses the command-line arguments(Lima, key function: ArgumentParser)
    
     Args:
      - arglist (list of str): arguments from the command line.
