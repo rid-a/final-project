@@ -18,7 +18,19 @@ def deck(filePath):
     return deck_list
 
 class Card:
+    '''
+    This card game class represents a playing card
+   
+    Attributes:
+     - card_str (str): the string that represents a card
+    '''
     def __init__(self, card):
+        '''
+        initializes a Card Object(Lima)
+       
+        Args:
+         - card (str): a string that represents a card
+        '''
         self.card_str = card
         
     def card_value_suit(self):
@@ -41,6 +53,13 @@ class Card:
         return name
     
     def __str__(self):
+        '''
+        Returns the string representation of the card (Lima)
+       
+        Returns:
+         - str: the string that represents a card
+
+        '''
         return f"{self.card_str}"
 
 class Player:
@@ -146,6 +165,15 @@ def main(playersList):
     game.play_game()
     
 def parse_args(argList):
+    '''
+    Parses the command-line arguments(Lima)
+   
+    Args:
+     - arglist (list of str): arguments from the command line.
+   
+    Returns:
+     - namespace: the parsed arguments, as a namespace.
+    '''
     parser = ArgumentParser()
     parser.add_argument('names', nargs="*", help = 'player names')
     return parser.parse_args(argList)
