@@ -4,7 +4,7 @@ import sys
 import re
 
 def deck(filePath):
-    """ Creates a list of cards from text file
+    """ Creates a list of cards from text file (Alisha)
     Args: 
         filePath(str): path to text file containing card names 
     Returns: 
@@ -83,7 +83,7 @@ class Table:
 class Game:
     """A game of Injera Bewatt """
     def __init__(self, players, deckList = deck ("card_deck.txt")):
-        """ Set attributes 
+        """ Set attributes (Alisha)
         Args: 
             players(list of Player): list of players 
             deckList(list of str): list of cards
