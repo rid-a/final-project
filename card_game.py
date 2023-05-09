@@ -67,7 +67,7 @@ class Card:
     def __str__(self):
         '''
         Returns the string representation of the card 
-        (Lima, key function: informal representation using magic method)
+        (Lima, informal representation using magic method)
        
         Returns:
          - str: the string that represents a card
@@ -85,6 +85,13 @@ class Player:
 
 class Table:
     def __init__(self, card_deck, pulled_cards, middle_cards, homes):
+        """Set attributes. (Rida, list comprehension)
+        Args:
+            card_deck (list of str): list of cards
+            pulled_cards (list of str): list of cards that were pulled
+            middle_cards (list of str): list of cards in the middle
+            homes (dict of str: int): players' names and their scores
+        """
         self.outer_cards = [x for x in card_deck if x not in pulled_cards if x not in middle_cards]
         self.middle_cards = middle_cards.copy()
         self.homes = homes.copy()
@@ -109,7 +116,9 @@ class Game:
         self.pulled_cards = list()
     
     def table(self):
-        """Return the table aka an instance of the table class, using this class' attributes as arguments"""
+        """Return an instance of Table using this class' attributes 
+        as arguments (Rida, composition of two custom classes)
+        """
         return Table(deck("card_deck.txt"), self.pulled_cards, self.middle_cards, self.homes)
     
     def game_over(self, table):
