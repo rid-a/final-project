@@ -4,6 +4,12 @@ import sys
 import re
 
 def deck(filePath):
+    """ Creates a list of cards from text file
+    Args: 
+        filePath(str): path to text file containing card names 
+    Returns: 
+        deck_list(list): list of cards
+    """
     deck_list = []
     with open(filePath, "r", encoding = "utf-8") as file:
         deck_list = []
@@ -56,8 +62,15 @@ class Table:
         return(f"Middle Cards: {self.middle_cards} Homes: {self.homes}")
     
 class Game:
-    """A game of Injera Bewatt"""
+    """A game of Injera Bewatt """
     def __init__(self, players, deckList = deck ("card_deck.txt")):
+        """ Set attributes 
+        Args: 
+            players(list of Player): list of players 
+            deckList(list of str): list of cards
+        Side effects:
+            sets attributes 
+        """
         self.players = players
         self.homes = {p.name: 0 for p in players}
         self.middle_cards = random.sample(deckList, 4)
