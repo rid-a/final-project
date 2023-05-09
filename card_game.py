@@ -123,7 +123,10 @@ class Game:
                 return 
     
     def play_game(self):
-        """Plays the game while the game is not over"""
+        """Plays the game while the game is not over
+        Side effects: 
+            prints who the winner is and the outcome of the game when it's over
+        """
         table = self.table()
         
         loop = -1
