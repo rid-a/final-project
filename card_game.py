@@ -77,7 +77,7 @@ class Table:
         self.homes = homes.copy()
     
     def __str__(self):
-        """returns an informal repsresentation of the board """
+        """returns an informal repsresentation of the board (Hanan) """
         return(f"Middle Cards: {self.middle_cards} Homes: {self.homes}")
     
 class Game:
@@ -144,7 +144,7 @@ class Game:
     def play_game(self):
         """Plays the game while the game is not over
         Side effects: 
-            prints who the winner is and the outcome of the game when it's over
+            prints who the winner is and the outcome of the game when it's over (Hanan)
         """
         table = self.table()
         
