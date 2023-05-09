@@ -76,14 +76,34 @@ class Card:
         return f"{self.card_str}"
 
 class Player:
+    """Represents a player.
+    Attributes:
+        name (str): name of a player
+    """
     def __init__(self, name):
+        """Sets attribute.
+        Side effects:
+            Sets the name attribute.
+        """
         self.name = name
 
     def choose_card(self, table):
+        """Chooses a random card from outer circle.
+        Args:
+            table (Table): the current table
+        Returns:
+            random_card (str): a randomly chosen card
+        """
         random_card = random.choice(table.outer_cards)
         return random_card
 
 class Table:
+    """Represents what is currently on the table.
+    Attributes:
+        outer_cards (list of str): the cards in the outer circle
+        middle_cards (list of str): the cards in the middle (face up)
+        homes (dict of str: int): players' names and their scores
+    """
     def __init__(self, card_deck, pulled_cards, middle_cards, homes):
         """Set attributes. (Rida, list comprehension)
         Args:
@@ -101,7 +121,13 @@ class Table:
         return(f"Middle Cards: {self.middle_cards} Homes: {self.homes}")
     
 class Game:
-    """A game of Injera Bewatt """
+    """A game of Injera Bewatt.
+    Attributes:
+        players (list of Player): list of players
+        homes (dict of str: int): players' names and their scores
+        middle_cards (list of str): the cards in the middle
+        pulled_cards (list of str): the cards that were pulled
+    """
     def __init__(self, players, deckList = deck ("card_deck.txt")):
         """ Set attributes (Alisha, Game class __init__: optional parameter)
         Args: 
@@ -122,6 +148,12 @@ class Game:
         return Table(deck("card_deck.txt"), self.pulled_cards, self.middle_cards, self.homes)
     
     def game_over(self, table):
+        """Determines if the game is over.
+        Args:
+            table (Table): the current table
+        Returns:
+            False if condition is fulfilled, else returns True
+        """
         if table.outer_cards:
             return False
         else:
@@ -131,6 +163,9 @@ class Game:
         """"A player's turn.
         Args:
             player (Player): a player
+        
+        Returns:
+            None (Nonetype)
         """
         table = self.table()
         
