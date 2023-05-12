@@ -127,6 +127,7 @@ class Game:
         homes (dict of str: int): players' names and their scores
         middle_cards (list of str): the cards in the middle
         pulled_cards (list of str): the cards that were pulled
+        t (Table): the current table
     """
     def __init__(self, players, deckList = deck ("card_deck.txt")):
         """ Set attributes (Alisha, Game class __init__: optional parameter)
@@ -140,24 +141,14 @@ class Game:
         self.homes = {p.name: 0 for p in players}
         self.middle_cards = random.sample(deckList, 4)
         self.pulled_cards = list()
+        self.t = ""
     
     def table(self):
         """Return an instance of Table using this class' attributes 
         as arguments (Rida, composition of two custom classes)
         """
-        return Table(deck("card_deck.txt"), self.pulled_cards, self.middle_cards, self.homes)
-    
-    def game_over(self, table):
-        """Determines if the game is over.
-        Args:
-            table (Table): the current table
-        Returns:
-            False if condition is fulfilled, else returns True
-        """
-        if table.outer_cards:
-            return False
-        else:
-            return True
+        self.t = Table(deck("card_deck.txt"), self.pulled_cards, self.middle_cards, self.homes)
+        return self.t
     
     def turn(self, player):
         """"A player's turn.
@@ -169,34 +160,36 @@ class Game:
         """
         table = self.table()
         
-        while self.game_over(table) == False:
+        if table.outer_cards:
             card = Card(player.choose_card(table))
             self.pulled_cards.append(card.card_str)
-            
+                    
             print(table)
             print (f"{player.name}, you pulled a {card.card_name()}!")
-            
+                    
             see_match = input("Do you see a match? Yes/No. ")
             if see_match.lower() == 'yes':
                 possible_match = Card(input("What card is the match? " + 
                     "(Format like this: '3 diamonds' or 'A spades')" + 
                     "choose wisely, you only get one chance. ").strip())
-                
+                        
                 if card.card_value_suit()[0] == possible_match.card_value_suit()[0] and possible_match.card_str in table.middle_cards:
                     print ("Match successful! Both cards will be added to your home.\n")
                     self.homes[player.name] += 2
                     self.middle_cards.remove(possible_match.card_str)
-                    return
-                
+                    pass
+                        
                 else:
                     print("Match unsuccessful. Your card will be added to the middle.\n")
                     self.middle_cards.append(card.card_str)
-                    return
-                
+                    pass
+                        
             elif see_match.lower() == "no":
                 print("Your turn is over, your card will be added to the middle.\n")
                 self.middle_cards.append(card.card_str)
-                return 
+                pass
+        else:
+            pass
     
     def play_game(self):
         """Plays the game while the game is not over
@@ -206,20 +199,22 @@ class Game:
         table = self.table()
         
         loop = -1
-        while self.game_over(table) == False:
+        while table.outer_cards:
+            table = self.table()
             loop += 1
             player = self.players[loop % len(self.players)]
             self.turn(player)
         
-        print(f"Game Over! {table}")   
-        winner = max(table.homes, key=lambda name: table.homes[name])         
-        print(f"The winner is {winner}!")
-    
+        
 def main(playersList):
     """Set up and play a game of Injera be Wet"""
     players = [Player(name) for name in playersList]
     game = Game(players)
     game.play_game()
+    
+    print(f"Game Over! {game.t}")   
+    winner = max(game.t.homes, key=lambda name: game.t.homes[name])         
+    print(f"The winner is {winner}!")
     
 def parse_args(argList):
     '''
